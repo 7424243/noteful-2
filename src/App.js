@@ -4,6 +4,7 @@ import DUMMYSTORE from './dummy-store';
 import NotesListNav from './Components/NoteListNav';
 import NoteListMain from './Components/NoteListMain';
 import NotePageMain from './Components/NotePageMain';
+import NotePageNav from './Components/NotePageNav';
 
 class App extends Component {
   state = {
@@ -26,12 +27,19 @@ class App extends Component {
         </header>
         <div className='nav-main'>
           <nav>
-          <Route 
+            <Route 
               exact
               path='/' 
               render={() => <NotesListNav 
                 folders={this.state.folders}
                 notes={this.state.notes}/>}
+            />
+            <Route 
+              path='/notepage/:noteId' 
+              render={(props) => <NotePageNav 
+                folders={this.state.folders}
+                notes={this.state.notes}
+                noteId={props.match.params.noteId}/> }
             />
           </nav>
           <main>

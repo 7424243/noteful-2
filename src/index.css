@@ -16,6 +16,12 @@ code {
   display: flex;
 }
 
+.header-link, h1 {
+  text-decoration: none;
+  margin-left: 1%;
+  margin-top: 10%;
+}
+
 /*NoteListMain Styling*/
 .note-name-link {
   text-decoration: none;
@@ -52,6 +58,7 @@ code {
 
 .folder {
   list-style-type: none;
+  margin: 5%;
 }
 
 .folder-list {
@@ -62,9 +69,13 @@ code {
   margin-left: 20%;
 }
 
+.add-folder-link {
+  text-decoration: none;
+}
+
 /*NotePageNav Styling*/
 .note-nav {
-  margin-left: 20%;
+  margin-left: 5%;
 }
 
 /*NotePageMain Styling*/
