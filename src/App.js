@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Route, Link } from 'react-router-dom';
 import DUMMYSTORE from './dummy-store';
 import NotesListNav from './Components/NoteListNav';
+import NoteListMain from './Components/NoteListMain';
 
 class App extends Component {
   state = {
@@ -22,16 +23,27 @@ class App extends Component {
         <header>
           <Link to='/' className='header-link'><h1>Noteful</h1></Link>
         </header>
-        <nav>
-        <Route 
-            exact
-            path='/' 
-            render={() => <NotesListNav 
-              folders={this.state.folders}
-              notes={this.state.notes}/>}
-          />
-        </nav>
-        <main></main>
+        <div className='nav-main'>
+          <nav>
+          <Route 
+              exact
+              path='/' 
+              render={() => <NotesListNav 
+                folders={this.state.folders}
+                notes={this.state.notes}/>}
+            />
+          </nav>
+          <main>
+            <Route 
+              exact
+              path='/' 
+              render={() => <NoteListMain 
+                folders={this.state.folders}
+                notes={this.state.notes}/>}
+            />
+          </main>
+        </div>
+        
       </div>
     );
   }

@@ -12,6 +12,37 @@ code {
     monospace;
 }
 
+.nav-main {
+  display: flex;
+}
+
+/*NoteListMain Styling*/
+.note-name-link {
+  text-decoration: none;
+}
+
+.note-item {
+  list-style-type: none;
+  border: solid;
+  padding: 10%;
+  display: inline-block;
+  margin: 5%;
+  width: 200px;
+  height: 100px;
+}
+
+.notes-list {
+  padding-left: 0px;
+}
+
+.notes-list-container {
+  margin-left: 20%;
+}
+
+.add-note-link {
+  margin-left: 30%;
+}
+
 
 
 /*NoteListNav Styling*/
@@ -25,4 +56,8 @@ code {
 
 .folder-list {
   padding-left: 0px;
+}
+
+.folders-container {
+  margin-left: 20%;
 }
