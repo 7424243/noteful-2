@@ -27,13 +27,13 @@ class NotesList extends Component {
 
         return (
             <div>
-                <main className='notes-list-container'>
-                    <h3 className='folder-sidebar'>{folderSelectedName[0].name}</h3>
-                    <ul className='notes-list'>
+                <main className='folder-notes-list-container'>
+                    <h3 className='folder-name'>{folderSelectedName[0].name}</h3>
+                    <ul className='folder-notes-list'>
                         {folderSelectedList}
                         <NavLink 
                             to='/addnote' 
-                            className='notes-list-addnote-button'>Add Note</NavLink>
+                            className='folder-notes-add-link'>Add Note</NavLink>
                     </ul>
                 </main>
             </div>

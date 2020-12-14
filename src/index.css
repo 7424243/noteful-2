@@ -3,13 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    background-color: lightblue;
 }
 
 .nav-main, .note-page-container {
@@ -20,11 +14,13 @@ code {
   text-decoration: none;
   margin-left: 1%;
   margin-top: 10%;
+  color: black;
 }
 
 /*NoteListMain Styling*/
 .note-name-link {
   text-decoration: none;
+  color: black;
 }
 
 .note-item {
@@ -35,6 +31,7 @@ code {
   margin: 5%;
   width: 200px;
   height: 100px;
+  background-color: lightyellow;
 }
 
 .notes-list {
@@ -47,6 +44,7 @@ code {
 
 .add-note-link {
   margin: 40%;
+  color: black;
 }
 
 
@@ -54,6 +52,7 @@ code {
 /*NoteListNav Styling*/
 .folder-name {
   text-decoration: none;
+  color: black;
 }
 
 .folder {
@@ -71,6 +70,7 @@ code {
 
 .add-folder-link {
   text-decoration: none;
+  color: black;
 }
 
 /*NotePageNav Styling*/
@@ -83,6 +83,9 @@ code {
   margin-left: 20%;
   margin-right: 20%;
 }
+
+/*FolderNoteListMain Styling*/
+
 
 
 
