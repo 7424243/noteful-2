@@ -53,11 +53,12 @@ body {
 .folder-name {
   text-decoration: none;
   color: black;
+  font-size: large;
 }
 
 .folder {
   list-style-type: none;
-  margin: 5%;
+  margin-bottom: 10px;
 }
 
 .folder-list {
@@ -85,7 +86,9 @@ body {
 }
 
 /*FolderNoteListMain Styling*/
-
+.folder-name {
+  text-align: center;
+}
 
 
 
