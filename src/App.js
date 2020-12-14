@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import DUMMYSTORE from './dummy-store';
 import NotesListNav from './Components/NoteListNav';
 import NoteListMain from './Components/NoteListMain';
+import NotePageMain from './Components/NotePageMain';
 
 class App extends Component {
   state = {
@@ -40,6 +41,13 @@ class App extends Component {
               render={() => <NoteListMain 
                 folders={this.state.folders}
                 notes={this.state.notes}/>}
+            />
+            <Route 
+              path='/notepage/:noteId' 
+              render={(props) => <NotePageMain 
+                folders={this.state.folders}
+                notes={this.state.notes}
+                noteId={props.match.params.noteId}/> }
             />
           </main>
         </div>

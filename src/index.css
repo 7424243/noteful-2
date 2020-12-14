@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.nav-main {
+.nav-main, .note-page-container {
   display: flex;
 }
 
@@ -40,7 +40,7 @@ code {
 }
 
 .add-note-link {
-  margin-left: 30%;
+  margin: 40%;
 }
 
 
@@ -61,3 +61,17 @@ code {
 .folders-container {
   margin-left: 20%;
 }
+
+/*NotePageNav Styling*/
+.note-nav {
+  margin-left: 20%;
+}
+
+/*NotePageMain Styling*/
+.note-spec-container {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+
+
