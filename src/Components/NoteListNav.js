@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 class NoteListNav extends Component {
     render() {
-
+        
         const list = this.props.folders.map((folder, i) => 
 
             <li 
@@ -13,7 +13,8 @@ class NoteListNav extends Component {
                 <NavLink 
                     to={`../noteslist/${folder.id}`}
                     className='folder-name'
-                    foldername={folder.name}>{folder.name}</NavLink>
+                    foldername={folder.name}
+                    notes={this.props.notes}>{folder.name}</NavLink>
             </li>
         );
 

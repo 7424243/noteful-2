@@ -5,17 +5,20 @@ import NotesListNav from './Components/NoteListNav';
 import NoteListMain from './Components/NoteListMain';
 import NotePageMain from './Components/NotePageMain';
 import NotePageNav from './Components/NotePageNav';
+import FolderNoteListMain from './Components/FolderNoteListMain';
 
 class App extends Component {
   state = {
     notes: [],
-    folders: []
+    folders: [],
+    displayAllNotes: null
   }
 
   componentDidMount() {
     this.setState({
       notes: DUMMYSTORE.notes,
-      folders: DUMMYSTORE.folders
+      folders: DUMMYSTORE.folders,
+      displayAllNotes: true
     })
   }
 
@@ -34,6 +37,13 @@ class App extends Component {
                 folders={this.state.folders}
                 notes={this.state.notes}/>}
             />
+            <Route
+              path='/noteslist/:folderId'
+              render={(props) => <NotesListNav
+                notes={this.state.notes}
+                folderId={props.match.params.folderId}
+                folders={this.state.folders}/>}
+            />  
             <Route 
               path='/notepage/:noteId' 
               render={(props) => <NotePageNav 
@@ -50,6 +60,13 @@ class App extends Component {
                 folders={this.state.folders}
                 notes={this.state.notes}/>}
             />
+            <Route
+              path='/noteslist/:folderId'
+              render={(props) => <FolderNoteListMain
+                notes={this.state.notes}
+                folderId={props.match.params.folderId}
+                folders={this.state.folders}/>}
+            />  
             <Route 
               path='/notepage/:noteId' 
               render={(props) => <NotePageMain 
