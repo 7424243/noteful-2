@@ -4,7 +4,6 @@ import NoteListNav from './Components/NoteListNav';
 import NoteListMain from './Components/NoteListMain';
 import NotePageMain from './Components/NotePageMain';
 import NotePageNav from './Components/NotePageNav';
-import FolderNoteListMain from './Components/FolderNoteListMain';
 import NotefulContext from './NotefulContext';
 
 class App extends Component {
