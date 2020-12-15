@@ -76,7 +76,7 @@ class App extends Component {
               />
               <Route
                 path='/noteslist/:folderId'
-                component={FolderNoteListMain}
+                component={NoteListMain}
               />  
               <Route 
                 path='/notepage/:noteId' 
