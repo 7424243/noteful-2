@@ -90,5 +90,9 @@ body {
   text-align: center;
 }
 
+.folder-name.active {
+  background-color: lightyellow;
+}
+
 
 
