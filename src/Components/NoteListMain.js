@@ -2,11 +2,14 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import { format } from 'date-fns';
+import NotefulContext from '../NotefulContext';
+
 
 class NoteListMain extends Component {
+    static contextType = NotefulContext;
 
     render() {
-        const list = this.props.notes.map((note, i) =>
+        const list = this.context.notes.map((note, i) =>
             <li 
                 key={i} 
                 className='note-item'>

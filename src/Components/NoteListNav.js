@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+import NotefulContext from '../NotefulContext';
 
 class NoteListNav extends Component {
+    static contextType = NotefulContext;
+
     render() {
         
-        const list = this.props.folders.map((folder, i) => 
+        const list = this.context.folders.map((folder, i) => 
 
             <li 
                 key={i} 
@@ -14,7 +17,7 @@ class NoteListNav extends Component {
                     to={`../noteslist/${folder.id}`}
                     className='folder-name'
                     foldername={folder.name}
-                    notes={this.props.notes}>{folder.name}</NavLink>
+                    notes={this.context.notes}>{folder.name}</NavLink>
             </li>
         );
 
