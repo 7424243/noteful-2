@@ -11,30 +11,32 @@ class NotePageMain extends Component {
         match: {
           params: {}
         }
-      }
+    }
 
-    // handleClickDelete = event => {
-    //     event.preventDefault()
-    //     const noteId = this.props.id
-    //     fetch(`http://localhost:9090/notes${noteId}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //     })
-    //         .then(response => {
-    //             if (!response.ok)
-    //                 return response.json().then(e => Promise.reject(e))
-    //             console.log(response.json())
-    //             return response.json();
-    //         })
-    //         .then(() ={
-    //             this.context.deleteNote(noteId)
-    //         })
-    //         .catch(error => {
-    //             console.log({error})
-    //         })
-    // }
+    handleClickDelete = e => {
+        e.preventDefault()
+        this.props.history.push('/')
+        const {noteId} = this.props.match.params
+    
+        fetch(`http://localhost:9090/notes/${noteId}`, {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json'
+          },
+        })
+          .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+            return res.json()
+          })
+          .then(() => {
+            this.context.deleteNote(noteId)
+            
+          })
+          .catch(error => {
+            console.error({ error })
+          })
+      }
 
     render() {
         const {noteId} = this.props.match.params;
@@ -49,10 +51,10 @@ class NotePageMain extends Component {
             <div className='note-page-container'>
                 <main className='note-spec-container'>
                     <h3>{noteForPage.name}</h3>
-                    <p>{noteForPage.folderId}</p>
                     <p>{format(new Date(noteForPage.modified), 'MM/d/yyyy')}</p>
                     <p>{noteForPage.content}</p>
-                    <button className='note-page-delete-link' onClick={this.handleDeleteNote}>delete</button>
+                    <button className='note-page-delete-link' 
+                    onClick={this.handleClickDelete}>delete</button>
                 </main>
             </div>
         )
