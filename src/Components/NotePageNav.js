@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
+import NotefulContext from "../NotefulContext";
 
 class NotePageNav extends Component {
-    render() {
-        const noteSpecs = this.props.notes.find(note =>
-            note.id === this.props.noteId);
+    static defaultProps = {
+        history: {
+            goBack: () => {}
+        },
+        match: {
+            params: {}
+        }
+    }
 
-        const currentFolder = this.props.folders.find(folder => 
+    static contextType = NotefulContext;
+
+    render() {
+        const noteSpecs = this.context.notes.find(note =>
+            note.id === this.props.match.params);
+        console.log(noteSpecs)
+
+        const currentFolder = this.context.folders.find(folder => 
             folder.id === noteSpecs.folderId);
         
         return (

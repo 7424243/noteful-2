@@ -16,7 +16,7 @@ class NoteListMain extends Component {
                 <NavLink 
                     to={`../notepage/${note.id}`} 
                     className='note-name-link'><h2>{note.name}</h2></NavLink>
-                <p>{format(new Date(note.modified), 'MM/d/yyyy')}</p>
+                <p></p>
                 <button className='delete-note'>delete</button>
             </li>
             )

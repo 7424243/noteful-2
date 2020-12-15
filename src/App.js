@@ -15,16 +15,38 @@ class App extends Component {
   }
 
   componentDidMount() {
+    Promise.all([
+      fetch(`http://localhost:9090/notes`),
+      fetch(`http://localhost:9090/folders`)
+    ])
+        .then(([notesResponse, foldersResponse]) => {
+          if (!notesResponse.ok) 
+            return notesResponse.json().then(error => Promise.reject(error));
+          if (!foldersResponse.ok)
+            return foldersResponse.json().then(error => Promise.reject(error));
+          return (Promise.all([notesResponse.json(), foldersResponse.json()])) ;
+        })
+        .then(([notes, folders]) => {
+          console.log(notes, folders)
+          this.setState({notes: notes, folders: folders});
+          
+        })
+        .catch(error => {
+          console.error({error})
+        });
+  }
+
+  handleDeleteNote = noteId => {
     this.setState({
-      notes: DUMMYSTORE.notes,
-      folders: DUMMYSTORE.folders,
-    })
+      notes: this.state.notes.filter(note => note.id !== noteId)
+    });
   }
 
   render() {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
+      deleteNote: this.handleDeleteNote
     }
     return (
       <div className="App">
@@ -45,10 +67,7 @@ class App extends Component {
               />  
               <Route 
                 path='/notepage/:noteId'
-                render={(props) => <NotePageNav 
-                  folders={this.state.folders}
-                  notes={this.state.notes}
-                  noteId={props.match.params.noteId}/> }
+                component={NotePageNav}
               />
             </nav>
             <main>
@@ -59,17 +78,11 @@ class App extends Component {
               />
               <Route
                 path='/noteslist/:folderId'
-                render={(props) => <FolderNoteListMain
-                  notes={this.state.notes}
-                  folderId={props.match.params.folderId}
-                  folders={this.state.folders}/>}
+                component={FolderNoteListMain}
               />  
               <Route 
                 path='/notepage/:noteId' 
-                render={(props) => <NotePageMain 
-                  folders={this.state.folders}
-                  notes={this.state.notes}
-                  noteId={props.match.params.noteId}/> }
+                component={NotePageMain}
               />
             </main>
           </div>

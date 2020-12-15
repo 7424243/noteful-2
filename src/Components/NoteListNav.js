@@ -4,13 +4,14 @@ import NotefulContext from '../NotefulContext';
 
 class NoteListNav extends Component {
     static contextType = NotefulContext;
+    
 
     render() {
         
-        const list = this.context.folders.map((folder, i) => 
+        const list = this.context.folders.map((folder) => 
 
             <li 
-                key={i} 
+                key={folder.id} 
                 id={folder.id} 
                 className='folder'>
                 <NavLink 
