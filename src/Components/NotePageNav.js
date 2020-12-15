@@ -13,7 +13,7 @@ class NotePageNav extends Component {
 
     render() {
         const noteSpecs = this.context.notes.find(note =>
-            note.id === this.props.params);
+            note.id === this.props.match.params);
         console.log(noteSpecs)
 
         // const currentFolder = this.context.folders.find(folder => 
@@ -26,7 +26,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>{noteSpecs.folderId}</h2>
+                <h2 className='note-folder-name'>folder name</h2>
             </nav>
         )
     }

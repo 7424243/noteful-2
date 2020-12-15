@@ -37,17 +37,21 @@ class NotePageMain extends Component {
     // }
 
     render() {
+        const {noteId} = this.props.match.params;
+        const {notes=[]} = this.context;
+        const getNote = (notes, noteId) =>
+            notes.find(note => note.id === noteId)
 
-        const noteSpecs = this.context.notes.find(note =>
-            note.id === this.props.match.params);
+        const noteForPage = getNote(notes, noteId);
+        console.log(noteForPage);
    
 
         return (
             <div className='note-page-container'>
                 <main className='note-spec-container'>
-                    <h3>{noteSpecs.name}</h3>
-                    <p>{format(new Date(noteSpecs.modified), 'MM/d/yyyy')}</p>
-                    <p>{noteSpecs.content}</p>
+                    <h3>{noteForPage.name}</h3>
+                    <p>{format(new Date(noteForPage.modified), 'MM/d/yyyy')}</p>
+                    <p>{noteForPage.content}</p>
                     <button className='note-page-delete-link' onClick={this.handleDeleteNote}>delete</button>
                 </main>
             </div>
