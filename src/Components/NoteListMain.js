@@ -24,6 +24,7 @@ class NoteListMain extends Component {
         const notesForFolder = getNotes(notes, folderId);
 
         const list = notesForFolder.map((note) =>
+
             <li 
                 key={note.id} 
                 className='note-item'>

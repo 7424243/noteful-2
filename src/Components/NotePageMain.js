@@ -7,6 +7,12 @@ class NotePageMain extends Component {
 
     static contextType = NotefulContext;
 
+    static defaultProps = {
+        match: {
+          params: {}
+        }
+      }
+
     // handleClickDelete = event => {
     //     event.preventDefault()
     //     const noteId = this.props.id
@@ -32,8 +38,8 @@ class NotePageMain extends Component {
 
     render() {
 
-        const noteSpecs = this.props.notes.find(note =>
-            note.id === this.props.noteId);
+        const noteSpecs = this.context.notes.find(note =>
+            note.id === this.props.match.params);
    
 
         return (

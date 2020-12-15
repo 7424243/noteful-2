@@ -1,15 +1,29 @@
 import React, {Component} from 'react';
 import {NavLink, withRouter} from 'react-router-dom';
 import { format } from 'date-fns';
+import NotefulContext from '../NotefulContext';
 
 class NotesList extends Component {
 
+    static defaultProps = {
+        match: {
+          params: {}
+        }
+      }
+    static contextType = NotefulContext;
+
     render() {
-        const folderSelectedList = this.props.notes.filter(note => 
-            note.folderId === this.props.folderId)
-            .map((note, i) =>
+        const {folderId} = this.props.match.params;
+        const {notes=[]} = this.context;
+        const getNotes = (notes, folderId) => (
+            (!folderId) ? notes : notes.filter(note => note.folderId === folderId)
+        )
+
+        const notesForFolder = getNotes(notes, folderId);
+
+        const list = notesForFolder.map((note) =>
             <li 
-                key={i} 
+                key={note.id} 
                 className='note-item'>
                 <NavLink 
                     to={`../notepage/${note.id}`} 
@@ -19,8 +33,8 @@ class NotesList extends Component {
             </li>
             )
 
-        const folderSelectedName = this.props.folders.filter(folder => 
-            folder.id === this.props.folderId)
+        const folderSelectedName = this.context.folders.filter(folder => 
+            folder.id === this.props.match.params.folderId)
 
             console.log(folderSelectedName[0].name);
 
@@ -30,7 +44,7 @@ class NotesList extends Component {
                 <main className='folder-notes-list-container'>
                     <h3 className='folder-name'>{folderSelectedName[0].name}</h3>
                     <ul className='folder-notes-list'>
-                        {folderSelectedList}
+                        {list}
                         <NavLink 
                             to='/addnote' 
                             className='folder-notes-add-link'>Add Note</NavLink>

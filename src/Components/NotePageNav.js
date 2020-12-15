@@ -4,19 +4,16 @@ import NotefulContext from "../NotefulContext";
 
 class NotePageNav extends Component {
     static defaultProps = {
-        history: {
-            goBack: () => {}
-        },
         match: {
-            params: {}
+          params: {}
         }
-    }
+      }
 
     static contextType = NotefulContext;
 
     render() {
         const noteSpecs = this.context.notes.find(note =>
-            note.id === this.props.match.params);
+            note.id === this.props.params);
         console.log(noteSpecs)
 
         // const currentFolder = this.context.folders.find(folder => 
@@ -29,7 +26,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>folder name</h2>
+                <h2 className='note-folder-name'>{noteSpecs.folderId}</h2>
             </nav>
         )
     }

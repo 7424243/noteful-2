@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Route, Link } from 'react-router-dom';
-import DUMMYSTORE from './dummy-store';
 import NoteListNav from './Components/NoteListNav';
 import NoteListMain from './Components/NoteListMain';
 import NotePageMain from './Components/NotePageMain';
@@ -77,17 +76,11 @@ class App extends Component {
               />
               <Route
                 path='/noteslist/:folderId'
-                render={(props) => <FolderNoteListMain
-                  notes={this.state.notes}
-                  folderId={props.match.params.folderId}
-                  folders={this.state.folders}/>}
+                component={FolderNoteListMain}
               />  
               <Route 
                 path='/notepage/:noteId' 
-                render={(props) => <NotePageMain 
-                  folders={this.state.folders}
-                  notes={this.state.notes}
-                  noteId={props.match.params.noteId}/> }
+                component={NotePageMain}
               />
             </main>
           </div>
