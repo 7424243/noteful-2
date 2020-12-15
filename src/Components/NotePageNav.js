@@ -19,8 +19,8 @@ class NotePageNav extends Component {
             note.id === this.props.match.params);
         console.log(noteSpecs)
 
-        const currentFolder = this.context.folders.find(folder => 
-            folder.id === noteSpecs.folderId);
+        // const currentFolder = this.context.folders.find(folder => 
+        //     folder.id === noteSpecs.folderId);
         
         return (
             <nav className='note-nav'>
@@ -29,7 +29,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>{currentFolder.name}</h2>
+                <h2 className='note-folder-name'>folder name</h2>
             </nav>
         )
     }

@@ -6,17 +6,31 @@ import NotefulContext from '../NotefulContext';
 
 
 class NoteListMain extends Component {
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+
     static contextType = NotefulContext;
 
     render() {
-        const list = this.context.notes.map((note, i) =>
+        const {folderId} = this.props.match.params;
+        const {notes=[]} = this.context;
+        const getNotes = (notes, folderId) => (
+            (!folderId) ? notes : notes.filter(note => note.folderId === folderId)
+        )
+
+        const notesForFolder = getNotes(notes, folderId);
+
+        const list = notesForFolder.map((note) =>
             <li 
-                key={i} 
+                key={note.id} 
                 className='note-item'>
                 <NavLink 
                     to={`../notepage/${note.id}`} 
                     className='note-name-link'><h2>{note.name}</h2></NavLink>
-                <p></p>
+                <p>{format(new Date(note.modified), 'MM/d/yyyy')}</p>
                 <button className='delete-note'>delete</button>
             </li>
             )

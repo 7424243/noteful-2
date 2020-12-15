@@ -27,8 +27,7 @@ class App extends Component {
           return (Promise.all([notesResponse.json(), foldersResponse.json()])) ;
         })
         .then(([notes, folders]) => {
-          console.log(notes, folders)
-          this.setState({notes: notes, folders: folders});
+          this.setState({notes, folders});
           
         })
         .catch(error => {
@@ -78,11 +77,17 @@ class App extends Component {
               />
               <Route
                 path='/noteslist/:folderId'
-                component={FolderNoteListMain}
+                render={(props) => <FolderNoteListMain
+                  notes={this.state.notes}
+                  folderId={props.match.params.folderId}
+                  folders={this.state.folders}/>}
               />  
               <Route 
                 path='/notepage/:noteId' 
-                component={NotePageMain}
+                render={(props) => <NotePageMain 
+                  folders={this.state.folders}
+                  notes={this.state.notes}
+                  noteId={props.match.params.noteId}/> }
               />
             </main>
           </div>
