@@ -43,13 +43,13 @@ class NotePageMain extends Component {
             notes.find(note => note.id === noteId)
 
         const noteForPage = getNote(notes, noteId);
-        console.log(noteForPage);
    
 
         return (
             <div className='note-page-container'>
                 <main className='note-spec-container'>
                     <h3>{noteForPage.name}</h3>
+                    <p>{noteForPage.folderId}</p>
                     <p>{format(new Date(noteForPage.modified), 'MM/d/yyyy')}</p>
                     <p>{noteForPage.content}</p>
                     <button className='note-page-delete-link' onClick={this.handleDeleteNote}>delete</button>

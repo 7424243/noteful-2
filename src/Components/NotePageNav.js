@@ -12,12 +12,17 @@ class NotePageNav extends Component {
     static contextType = NotefulContext;
 
     render() {
-        const noteSpecs = this.context.notes.find(note =>
-            note.id === this.props.match.params);
-        console.log(noteSpecs)
 
-        // const currentFolder = this.context.folders.find(folder => 
-        //     folder.id === noteSpecs.folderId);
+        const {noteId} = this.props.match.params;
+        const {notes=[]} = this.context;
+        const {folders=[]} = this.context;
+        const getNote = (notes, noteId) =>
+            notes.find(note => note.id === noteId)
+
+        const noteForPage = getNote(notes, noteId);
+
+         const currentFolder = folders.find(folder => 
+             folder.id === noteForPage.folderId);
         
         return (
             <nav className='note-nav'>
@@ -26,7 +31,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>folder name</h2>
+                <h2 className='note-folder-name'>{currentFolder.name}</h2>
             </nav>
         )
     }
