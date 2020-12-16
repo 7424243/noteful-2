@@ -6,19 +6,22 @@ import NotefulContext from '../NotefulContext';
 
 
 class NoteListMain extends Component {
+
+    static contextType = NotefulContext;
+
     static defaultProps = {
-        onDeleteNote: () => {},
         match: {
             params: {}
         }
     }
 
-    static contextType = NotefulContext;
+    
 
-    handleClickDelete = e => {
+    handleClickDelete = (e) => {
+        console.log(this.props.match.params)
         e.preventDefault()
         const {noteId} = this.props.match.params;
-    
+
         fetch(`http://localhost:9090/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
@@ -32,15 +35,10 @@ class NoteListMain extends Component {
           })
           .then(() => {
             this.context.deleteNote(noteId)
-            this.props.history.push('/')
           })
           .catch(error => {
             console.error({ error })
           })
-    }
-
-    handleDeleteNote = noteId => {
-        console.log('i was clicked')
     }
 
     render() {
@@ -57,11 +55,11 @@ class NoteListMain extends Component {
                 <NavLink 
                     to={`../notepage/${note.id}`} 
                     className='note-name-link'><h2>{note.name}</h2></NavLink>
+                <p>{note.id}</p>
                 <p>{format(new Date(note.modified), 'MM/d/yyyy')}</p>
                 <button 
                     className='delete-note'
-                    onClick={this.handleClickDelete}
-                    >delete</button>
+                    onClick={this.handleClickDelete}>delete</button>
             </li>
             )
         return (
