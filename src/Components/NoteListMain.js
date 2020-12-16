@@ -1,8 +1,8 @@
 
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import { format } from 'date-fns';
 import NotefulContext from '../NotefulContext';
+import Note from './Note';
 
 
 class NoteListMain extends Component {
@@ -13,32 +13,6 @@ class NoteListMain extends Component {
         match: {
             params: {}
         }
-    }
-
-    
-
-    handleClickDelete = (e) => {
-        console.log(this.props.match.params)
-        e.preventDefault()
-        const {noteId} = this.props.match.params;
-
-        fetch(`http://localhost:9090/notes/${noteId}`, {
-          method: 'DELETE',
-          headers: {
-            'content-type': 'application/json'
-          },
-        })
-          .then(res => {
-            if (!res.ok)
-              return res.json().then(e => Promise.reject(e))
-            return res.json()
-          })
-          .then(() => {
-            this.context.deleteNote(noteId)
-          })
-          .catch(error => {
-            console.error({ error })
-          })
     }
 
     render() {
@@ -52,14 +26,11 @@ class NoteListMain extends Component {
             <li 
                 key={note.id} 
                 className='note-item'>
-                <NavLink 
-                    to={`../notepage/${note.id}`} 
-                    className='note-name-link'><h2>{note.name}</h2></NavLink>
-                <p>{note.id}</p>
-                <p>{format(new Date(note.modified), 'MM/d/yyyy')}</p>
-                <button 
-                    className='delete-note'
-                    onClick={this.handleClickDelete}>delete</button>
+                <Note 
+                  id={note.id}
+                  name={note.name}
+                  modified={note.modified}/>
+
             </li>
             )
         return (
