@@ -5,6 +5,8 @@ import NoteListMain from './Components/NoteListMain';
 import NotePageMain from './Components/NotePageMain';
 import NotePageNav from './Components/NotePageNav';
 import NotefulContext from './NotefulContext';
+import AddFolder from './Components/AddFolder';
+import AddNote from './Components/AddNote';
 
 class App extends Component {
   state = {
@@ -39,11 +41,25 @@ class App extends Component {
     });
   }
 
+  addFolder = folder => {
+    this.setState({
+      folders: [ ...this.state.folders, folder],
+    })
+  }
+
+  addNote = note => {
+    this.setState({
+      notes: [ ...this.state.notes, note],
+    })
+  }
+
   render() {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addFolder: this.addFolder,
+      addNote: this.addNote,
     }
     return (
       <div className="App">
@@ -66,6 +82,9 @@ class App extends Component {
                 path='/notepage/:noteId'
                 component={NotePageNav}
               />
+              <Route 
+                path='/addfolder'
+                component={AddFolder}/>
             </nav>
             <main>
               <Route 
@@ -81,6 +100,9 @@ class App extends Component {
                 path='/notepage/:noteId' 
                 component={NotePageMain}
               />
+              <Route 
+                path='/addnote'
+                component={AddNote}/>
             </main>
           </div>
         </NotefulContext.Provider>
