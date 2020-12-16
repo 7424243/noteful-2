@@ -7,6 +7,7 @@ import NotePageNav from './Components/NotePageNav';
 import NotefulContext from './NotefulContext';
 import AddFolder from './Components/AddFolder';
 import AddNote from './Components/AddNote';
+import ErrorBoundary from './Components/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -68,42 +69,46 @@ class App extends Component {
         </header>
         <NotefulContext.Provider value={contextValue} >
           <div className='nav-main'>
-            <nav>
-              <Route 
-                exact
-                path='/' 
-                component={NoteListNav}
-              />
-              <Route
-                path='/noteslist/:folderId'
-                component={NoteListNav}
-              />  
-              <Route 
-                path='/notepage/:noteId'
-                component={NotePageNav}
-              />
-              <Route 
-                path='/addfolder'
-                component={AddFolder}/>
-            </nav>
-            <main>
-              <Route 
-                exact
-                path='/' 
-                component={NoteListMain}
-              />
-              <Route
-                path='/noteslist/:folderId'
-                component={NoteListMain}
-              />  
-              <Route 
-                path='/notepage/:noteId' 
-                component={NotePageMain}
-              />
-              <Route 
-                path='/addnote'
-                component={AddNote}/>
-            </main>
+            <ErrorBoundary>
+              <nav>
+                <Route 
+                  exact
+                  path='/' 
+                  component={NoteListNav}
+                />
+                <Route
+                  path='/noteslist/:folderId'
+                  component={NoteListNav}
+                />  
+                <Route 
+                  path='/notepage/:noteId'
+                  component={NotePageNav}
+                />
+                <Route 
+                  path='/addfolder'
+                  component={AddFolder}/>
+              </nav>
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <main>
+                <Route 
+                  exact
+                  path='/' 
+                  component={NoteListMain}
+                />
+                <Route
+                  path='/noteslist/:folderId'
+                  component={NoteListMain}
+                />  
+                <Route 
+                  path='/notepage/:noteId' 
+                  component={NotePageMain}
+                />
+                <Route 
+                  path='/addnote'
+                  component={AddNote}/>
+              </main>
+            </ErrorBoundary>
           </div>
         </NotefulContext.Provider>
         
