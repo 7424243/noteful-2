@@ -31,8 +31,8 @@ body {
   list-style-type: none;
   display: inline-block;
   margin: 5%;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   background-color: lightyellow;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .notes-list-container {
-  margin-left: 150px;
+  margin-left: 200px;
 }
 
 .add-note-link {
@@ -59,8 +59,7 @@ body {
 
 /*Note styling*/
 .note {
-  margin: 100px;
-  position: relative;
+  margin: 60px;
 }
 
 
@@ -113,6 +112,30 @@ body {
 
 .folder-name.active {
   background-color: lightyellow;
+}
+
+/*AddNote and AddFolder Styling*/
+.note-form, .folder-form {
+  margin-left: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-name, 
+.content, 
+.note-form_required, 
+.note-folder, 
+.new-folder-name, 
+.folder-form_required {
+  margin-bottom: 20px;
+}
+
+.form-button {
+  padding: 5%;
+  margin-right: 10%;
 }
 
 

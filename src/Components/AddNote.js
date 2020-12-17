@@ -92,6 +92,7 @@ class AddNote extends Component {
                         <ValidationError message={this.validateName()}/>}
                     <label htmlFor='content'>Content</label>
                     <textarea 
+                        className='content'
                         onChange={e => this.updateContent(e.target.value)}/>
                     <label htmlFor='folder'>Folder</label>
                     <select 
