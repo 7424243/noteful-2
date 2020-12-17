@@ -40,6 +40,7 @@ class AddNote extends Component {
 
         fetch(`http://localhost:9090/folders`, {
             method: 'POST',
+            body: JSON.stringify(this.state),
             headers: {
                 'content-type': 'application/json'
             },
@@ -87,6 +88,7 @@ class AddNote extends Component {
                         className='note-folder'
                         name='folder'
                         onChange={e => this.updateFolder(e.target.value)}>
+                        <option></option>
                         {options}
                     </select>
                 </div>
