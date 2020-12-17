@@ -41,6 +41,20 @@ class AddNote extends Component {
         }
     };
 
+    validateContent() {
+        const content = this.state.content.trim();
+        if(content.length === 0) {
+            return 'At least one character is required'
+        }
+    };
+
+    validateFolder() {
+        const folder = this.state.folderId;
+        if(folder.length === 0) {
+            return 'Must select a folder'
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state)
@@ -86,11 +100,13 @@ class AddNote extends Component {
                         onChange={e => this.updateName(e.target.value)}/>
                         {this.state.name &&
                         <ValidationError message={this.validateName()}/>}
-                    <label htmlFor='content'>Content</label>
+                    <label htmlFor='content'>Content *</label>
                     <textarea 
                         className='content'
                         onChange={e => this.updateContent(e.target.value)}/>
-                    <label htmlFor='folder'>Folder</label>
+                        {this.state.content &&
+                        <ValidationError message={this.validateContent()}/>}
+                    <label htmlFor='folder'>Folder *</label>
                     <select 
                         className='note-folder'
                         name='folder'
@@ -98,6 +114,8 @@ class AddNote extends Component {
                         <option></option>
                         {options}
                     </select>
+                    {this.state.folder &&
+                        <ValidationError message={this.validateFolder()}/>}
                 </div>
                 <div className='form-button-group'>
                     <button type='reset' className='form-button'
@@ -106,7 +124,7 @@ class AddNote extends Component {
                         type='submit' 
                         className='form-button'
                         onClick={this.handleClickSubmit}
-                        disabled={this.validateName()}>Submit</button>
+                        disabled={this.validateName() || this.validateContent() || this.validateFolder()}>Submit</button>
                 </div>
             </form>
         )
