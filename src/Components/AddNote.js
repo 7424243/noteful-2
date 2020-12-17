@@ -8,11 +8,14 @@ class AddNote extends Component {
         this.state = {
                 name: {value: '', touched: false},
                 content: {value: ''},
-                folder: {value: ''}
+                folder: {value: ''},
+                modified: {value: ''}
         }
     }
 
     static contextType = NotefulContext;
+
+  
 
     updateName(name) {
         this.setState({name: {value: name, touched: true}})
@@ -24,6 +27,7 @@ class AddNote extends Component {
         this.setState({folder: {value: folder}})
     }
 
+
     validateName() {
         const name = this.state.name.value.trim();
         if(name.length === 0) {
@@ -33,31 +37,30 @@ class AddNote extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const {name, content, folder} = this.state;
-        console.log('Name:', name);
-        console.log('Content:', content);
-        console.log('Folder:', folder);
+        const modifiedDate = new Date().toISOString();
+        this.setState({modified: {value: modifiedDate}})
+        console.log(this.state);
 
-        fetch(`http://localhost:9090/folders`, {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'content-type': 'application/json'
-            },
-        })
-            .then(response => {
-                console.log(response)
-                if (!response.ok)
-                    return response.json().then(e => Promise.reject(e))
-                return response.json()
-            })
-            .then((data) => {
-                this.context.addNote(data)
-                this.props.history.push('/')
-            })
-            .catch(error => {
-                console.error({error})
-            })
+        // fetch(`http://localhost:9090/notes`, {
+        //     method: 'POST',
+        //     body: JSON.stringify(this.state),
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        // })
+        //     .then(response => {
+        //         console.log(response)
+        //         if (!response.ok)
+        //             return response.json().then(e => Promise.reject(e))
+        //         return response.json()
+        //     })
+        //     .then((data) => {
+        //         this.context.addNote(data)
+        //         this.props.history.push('/')
+        //     })
+        //     .catch(error => {
+        //         console.error({error})
+        //     })
     }
 
 
