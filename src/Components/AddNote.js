@@ -8,7 +8,7 @@ class AddNote extends Component {
         this.state = {
                 name:'',
                 content: '',
-                folder: '',
+                folderId: '',
                 modified: '',
         }
     }
@@ -23,8 +23,8 @@ class AddNote extends Component {
     updateContent(content) {
         this.setState({content: content})
     }
-    updateFolder(folder) {
-        this.setState({folder: folder})
+    updateFolder(folderId) {
+        this.setState({folderId: folderId})
     }
 
     handleClickCancel = () => {
@@ -73,7 +73,7 @@ class AddNote extends Component {
 
     render() {
         const options = this.context.folders.map((folder) =>
-            <option key={folder.id} value={folder.name}>{folder.name}</option>
+            <option key={folder.id} value={folder.id}>{folder.name}</option>
         )
 
         return (
@@ -97,7 +97,7 @@ class AddNote extends Component {
                     <select 
                         className='note-folder'
                         name='folder'
-                        onChange={e => this.updateFolder(e.target.value)}>
+                        onChange={e => this.updateFolder(e.target.value, e.target.folderid)}>
                         <option></option>
                         {options}
                     </select>
