@@ -74,7 +74,7 @@ body {
 
 .folder {
   list-style-type: none;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .folder-list {
@@ -88,6 +88,11 @@ body {
 .add-folder-link {
   text-decoration: none;
   color: black;
+}
+
+.folder-add-button {
+  margin-top: 15px;
+  padding: 5%;
 }
 
 /*NotePageNav Styling*/
