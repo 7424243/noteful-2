@@ -1,0 +1,39 @@
+/*NoteListNav Styling*/
+.add-folder-link {
+  text-decoration: none;
+  color: black;
+}
+
+.folder {
+  list-style-type: none;
+  margin-bottom: 15px;
+}
+
+.folder-add-button {
+  margin-top: 15px;
+  padding: 5%;
+}
+
+.folder-list {
+  padding-left: 0px;
+}
+
+.folder-name {
+  text-decoration: none;
+  color: black;
+  font-size: large;
+}
+
+.folder-name.active {
+  background-color: lightyellow;
+}
+
+.folders-container {
+  margin-left: 15px;
+}
+
+
+
+
+
+

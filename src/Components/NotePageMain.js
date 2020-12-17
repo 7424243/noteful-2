@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { format } from 'date-fns';
 import NotefulContext from '../NotefulContext';
+import '../Styling/NotePageMain.css';
 
 
 class NotePageMain extends Component {

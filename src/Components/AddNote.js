@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from './ValidationError';
+import '../Styling/Forms.css';
 
 class AddNote extends Component {
     constructor(props) {

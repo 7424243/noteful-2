@@ -1,0 +1,24 @@
+/*AddNote and AddFolder Styling*/
+.form-button {
+  padding: 5%;
+  margin-right: 10%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-form, .folder-form {
+  margin-left: 15px;
+}
+
+.note-name, 
+.content, 
+.note-form_required, 
+.note-folder, 
+.new-folder-name, 
+.folder-form_required {
+  margin-bottom: 20px;
+}
+

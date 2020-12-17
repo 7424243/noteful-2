@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
+import '../Styling/NoteListNav.css';
 
 class NoteListNav extends Component {
     static contextType = NotefulContext;

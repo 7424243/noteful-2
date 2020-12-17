@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
 import NotefulContext from "../NotefulContext";
+import '../Styling/NotePageNav.css';
 
 class NotePageNav extends Component {
     static defaultProps = {

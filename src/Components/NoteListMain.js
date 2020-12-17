@@ -1,8 +1,8 @@
-
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import Note from './Note';
+import '../Styling/NoteListMain.css';
 
 
 class NoteListMain extends Component {

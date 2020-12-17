@@ -10,10 +10,6 @@ body {
     background-color: lightblue;
 }
 
-.nav-main, .note-page-container {
-  display: flex;
-}
-
 .header-link, h1 {
   text-decoration: none;
   margin-left: 15px;
@@ -21,122 +17,13 @@ body {
   color: black;
 }
 
-/*NoteListMain Styling*/
-.note-name-link {
-  text-decoration: none;
-  color: black;
-}
-
-.note-item {
-  list-style-type: none;
-  display: inline-block;
-  margin: 5%;
-  width: 200px;
-  height: 200px;
-  background-color: lightyellow;
-}
-
-.notes-list {
-  padding-left: 0px;
-}
-
-.notes-list-container {
-  margin-left: 200px;
-}
-
-.add-note-link {
-  color: black;
-  text-decoration: none;
-  font-size: medium;
-}
-
-.add-button {
-  padding: 1%;
-  margin-left: 50px;
-  margin-top: 50px;
-  margin-bottom: 75px;
-}
-
-/*Note styling*/
-.note {
-  margin: 60px;
-}
-
-
-
-/*NoteListNav Styling*/
-.folder-name {
-  text-decoration: none;
-  color: black;
-  font-size: large;
-}
-
-.folder {
-  list-style-type: none;
-  margin-bottom: 15px;
-}
-
-.folder-list {
-  padding-left: 0px;
-}
-
-.folders-container {
-  margin-left: 15px;
-}
-
-.add-folder-link {
-  text-decoration: none;
-  color: black;
-}
-
-.folder-add-button {
-  margin-top: 15px;
-  padding: 5%;
-}
-
-/*NotePageNav Styling*/
-.note-nav {
-  margin-left: 15px;
-}
-
-/*NotePageMain Styling*/
-.note-spec-container {
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-/*FolderNoteListMain Styling*/
-.folder-name {
-  text-align: center;
-}
-
-.folder-name.active {
-  background-color: lightyellow;
-}
-
-/*AddNote and AddFolder Styling*/
-.note-form, .folder-form {
-  margin-left: 15px;
-}
-
-.form-group {
+.nav-main, .note-page-container {
   display: flex;
-  flex-direction: column;
 }
 
-.note-name, 
-.content, 
-.note-form_required, 
-.note-folder, 
-.new-folder-name, 
-.folder-form_required {
-  margin-bottom: 20px;
-}
 
-.form-button {
-  padding: 5%;
-  margin-right: 10%;
-}
+
+
 
 
 
