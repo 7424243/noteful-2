@@ -16,39 +16,34 @@ class AddNote extends Component {
 
     static contextType = NotefulContext;
 
-  
-
     updateName(name) {
         this.setState({name: name})
-    }
+    };
     updateContent(content) {
         this.setState({content: content})
-    }
+    };
     updateFolder(folderId) {
         this.setState({folderId: folderId})
-    }
+    };
 
     handleClickCancel = () => {
         this.props.history.push('/')
-    }
-
+    };
     handleClickSubmit = () => {
         const modifiedDate = new Date().toISOString();
-        this.setState({modified: modifiedDate})
-    }
-
+        this.setState({modified: modifiedDate});
+    };
 
     validateName() {
         const name = this.state.name.trim();
         if(name.length === 0) {
             return 'Name is required'
         }
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state)
-
         fetch(`http://localhost:9090/notes`, {
             method: 'POST',
             body: JSON.stringify(this.state),
@@ -57,25 +52,25 @@ class AddNote extends Component {
             },
             })
             .then(response => {
-                console.log(response)
+                console.log(response);
                 if (!response.ok)
-                    return response.json().then(e => Promise.reject(e))
-                return response.json()
+                    return response.json().then(e => Promise.reject(e));
+                return response.json();
             })
             .then((data) => {
-                this.context.addNote(data)
-                this.props.history.push('/')
+                this.context.addNote(data);
+                this.props.history.push('/');
             })
             .catch(error => {
-                console.error({error})
-            })
+                console.error({error});
+            });
     }
 
 
     render() {
         const options = this.context.folders.map((folder) =>
             <option key={folder.id} value={folder.id}>{folder.name}</option>
-        )
+        );
 
         return (
             <form className='note-form' onSubmit={e => this.handleSubmit(e)}>

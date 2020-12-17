@@ -32,7 +32,7 @@ class App extends Component {
           
         })
         .catch(error => {
-          console.error({error})
+          console.error({error});
         });
   }
 
@@ -45,13 +45,13 @@ class App extends Component {
   addFolder = folder => {
     this.setState({
       folders: [ ...this.state.folders, folder],
-    })
+    });
   }
 
   addNote = note => {
     this.setState({
       notes: [ ...this.state.notes, note],
-    })
+    });
   }
 
   render() {
@@ -61,7 +61,7 @@ class App extends Component {
       deleteNote: this.handleDeleteNote,
       addFolder: this.addFolder,
       addNote: this.addNote,
-    }
+    };
     return (
       <div className="App">
         <header>
@@ -111,11 +111,9 @@ class App extends Component {
             </ErrorBoundary>
           </div>
         </NotefulContext.Provider>
-        
       </div>
     );
   }
-
 }
 
 export default App;

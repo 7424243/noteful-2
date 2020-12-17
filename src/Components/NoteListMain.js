@@ -4,9 +4,7 @@ import NotefulContext from '../NotefulContext';
 import Note from './Note';
 import '../Styling/NoteListMain.css';
 
-
 class NoteListMain extends Component {
-
     static contextType = NotefulContext;
 
     static defaultProps = {

@@ -13,18 +13,14 @@ class NotePageNav extends Component {
     static contextType = NotefulContext;
 
     render() {
-
         const {noteId} = this.props.match.params;
         const {notes=[]} = this.context;
         const {folders=[]} = this.context;
         const getNote = (notes, noteId) =>
-            notes.find(note => note.id === noteId)
-
+            notes.find(note => note.id === noteId);
         const noteForPage = getNote(notes, noteId);
-
          const currentFolder = folders.find(folder => 
              folder.id === noteForPage.folderId);
-        
         return (
             <nav className='note-nav'>
                 <button 

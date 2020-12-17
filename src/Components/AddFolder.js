@@ -10,29 +10,29 @@ class AddFolder extends Component {
             name: '', 
             touched: false
         }
-    }
+    };
 
     static contextType = NotefulContext;
 
 
     updateFolder(folder) {
         this.setState({name: folder, touched: true})
-    }
+    };
 
     handleClickCancel = () => {
         this.props.history.push('/')
-    }
+    };
     
     validateFolder() {
         const folder = this.state.name.trim();
         if (folder.length === 0) {
             return 'Folder is required'
         } 
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('Folder:', this.state.name)
+        console.log('Folder:', this.state.name);
         fetch(`http://localhost:9090/folders`, {
             method: 'POST',
             body: JSON.stringify(this.state),
@@ -41,18 +41,18 @@ class AddFolder extends Component {
             },
         })
             .then(response => {
-                console.log(response)
+                console.log(response);
                 if (!response.ok)
-                    return response.json().then(e => Promise.reject(e))
-                return response.json()
+                    return response.json().then(e => Promise.reject(e));
+                return response.json();
             })
             .then((data) => {
-                this.context.addFolder(data)
-                this.props.history.push('/')
+                this.context.addFolder(data);
+                this.props.history.push('/');
             })
             .catch(error => {
-                console.error({error})
-            })
+                console.error({error});
+            });
     }
 
     render() {

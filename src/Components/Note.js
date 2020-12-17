@@ -10,14 +10,12 @@ class Note extends Component {
     static defaultProps = {
         onDeleteNote: () => {}
     }
+
     static contextType = NotefulContext;
-
-
 
     handleClickDelete = (e) => {
         e.preventDefault()
         const noteId = this.props.id;
-
         fetch(`http://localhost:9090/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
@@ -26,15 +24,15 @@ class Note extends Component {
         })
           .then(res => {
             if (!res.ok)
-              return res.json().then(e => Promise.reject(e))
-            return res.json()
+              return res.json().then(e => Promise.reject(e));
+            return res.json();
           })
           .then(() => {
-            this.context.deleteNote(noteId)
-            this.props.onDeleteNote(noteId)
+            this.context.deleteNote(noteId);
+            this.props.onDeleteNote(noteId);
           })
           .catch(error => {
-            console.error({ error })
+            console.error({ error });
           })
     }
     render() {

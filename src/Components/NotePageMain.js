@@ -5,7 +5,6 @@ import '../Styling/NotePageMain.css';
 
 
 class NotePageMain extends Component {
-
     static contextType = NotefulContext;
 
     static defaultProps = {
@@ -18,7 +17,6 @@ class NotePageMain extends Component {
         e.preventDefault()
         this.props.history.push('/')
         const {noteId} = this.props.match.params
-    
         fetch(`http://localhost:9090/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
@@ -27,15 +25,15 @@ class NotePageMain extends Component {
         })
           .then(res => {
             if (!res.ok)
-              return res.json().then(e => Promise.reject(e))
-            return res.json()
+              return res.json().then(e => Promise.reject(e));
+            return res.json();
           })
           .then(() => {
-            this.context.deleteNote(noteId)
+            this.context.deleteNote(noteId);
             
           })
           .catch(error => {
-            console.error({ error })
+            console.error({ error });
           })
       }
 
@@ -43,11 +41,8 @@ class NotePageMain extends Component {
         const {noteId} = this.props.match.params;
         const {notes=[]} = this.context;
         const getNote = (notes, noteId) =>
-            notes.find(note => note.id === noteId)
-
+            notes.find(note => note.id === noteId);
         const noteForPage = getNote(notes, noteId);
-   
-
         return (
             <div className='note-page-container'>
                 <main className='note-spec-container'>

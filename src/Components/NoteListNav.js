@@ -6,11 +6,8 @@ import '../Styling/NoteListNav.css';
 class NoteListNav extends Component {
     static contextType = NotefulContext;
     
-
     render() {
-        
         const list = this.context.folders.map((folder) => 
-
             <li 
                 key={folder.id} 
                 id={folder.id} 
@@ -21,7 +18,7 @@ class NoteListNav extends Component {
                     foldername={folder.name}
                     notes={this.context.notes}>{folder.name}</NavLink>
             </li>
-        );
+        )
 
         return (
             <div className='folders-container'>

@@ -8,14 +8,14 @@ class ErrorBoundary extends Component {
         };
     }
     static getDerivedStateFromError(error) {
-        return {hasError: true}
+        return {hasError: true};
     }
 
     render() {
         if (this.state.hasError) {
             return (
                 <h2>Unable to display at this time.</h2>
-            )
+            );
         }
         return this.props.children;
     }
