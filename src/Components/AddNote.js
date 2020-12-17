@@ -6,10 +6,10 @@ class AddNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                name: {value: '', touched: false},
-                content: {value: ''},
-                folder: {value: ''},
-                modified: {value: ''}
+                name:'',
+                content: '',
+                folder: '',
+                modified: '',
         }
     }
 
@@ -18,18 +18,27 @@ class AddNote extends Component {
   
 
     updateName(name) {
-        this.setState({name: {value: name, touched: true}})
+        this.setState({name: name})
     }
     updateContent(content) {
-        this.setState({content: {value: content}})
+        this.setState({content: content})
     }
     updateFolder(folder) {
-        this.setState({folder: {value: folder}})
+        this.setState({folder: folder})
+    }
+
+    handleClickCancel = () => {
+        this.props.history.push('/')
+    }
+
+    handleClickSubmit = () => {
+        const modifiedDate = new Date().toISOString();
+        this.setState({modified: modifiedDate})
     }
 
 
     validateName() {
-        const name = this.state.name.value.trim();
+        const name = this.state.name.trim();
         if(name.length === 0) {
             return 'Name is required'
         }
@@ -37,30 +46,28 @@ class AddNote extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const modifiedDate = new Date().toISOString();
-        this.setState({modified: {value: modifiedDate}})
-        console.log(this.state);
+        console.log(this.state)
 
-        // fetch(`http://localhost:9090/notes`, {
-        //     method: 'POST',
-        //     body: JSON.stringify(this.state),
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        // })
-        //     .then(response => {
-        //         console.log(response)
-        //         if (!response.ok)
-        //             return response.json().then(e => Promise.reject(e))
-        //         return response.json()
-        //     })
-        //     .then((data) => {
-        //         this.context.addNote(data)
-        //         this.props.history.push('/')
-        //     })
-        //     .catch(error => {
-        //         console.error({error})
-        //     })
+        fetch(`http://localhost:9090/notes`, {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                'content-type': 'application/json'
+            },
+            })
+            .then(response => {
+                console.log(response)
+                if (!response.ok)
+                    return response.json().then(e => Promise.reject(e))
+                return response.json()
+            })
+            .then((data) => {
+                this.context.addNote(data)
+                this.props.history.push('/')
+            })
+            .catch(error => {
+                console.error({error})
+            })
     }
 
 
@@ -81,7 +88,7 @@ class AddNote extends Component {
                         name='name'
                         id='name'
                         onChange={e => this.updateName(e.target.value)}/>
-                        {this.state.name.touched &&
+                        {this.state.name &&
                         <ValidationError message={this.validateName()}/>}
                     <label htmlFor='content'>Content</label>
                     <textarea 
@@ -96,10 +103,12 @@ class AddNote extends Component {
                     </select>
                 </div>
                 <div className='form-button-group'>
-                    <button type='reset' className='form-button'>Cancel</button>
+                    <button type='reset' className='form-button'
+                        onClick={this.handleClickCancel}>Cancel</button>
                     <button 
                         type='submit' 
                         className='form-button'
+                        onClick={this.handleClickSubmit}
                         disabled={this.validateName()}>Submit</button>
                 </div>
             </form>

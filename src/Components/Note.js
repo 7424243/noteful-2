@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {format} from 'date-fns';
 import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
+
+
 
 class Note extends Component {
     static defaultProps = {
         onDeleteNote: () => {}
     }
     static contextType = NotefulContext;
+
+
 
     handleClickDelete = (e) => {
         e.preventDefault()
@@ -49,3 +54,9 @@ class Note extends Component {
 }
 
 export default Note;
+
+Note.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired,
+}
