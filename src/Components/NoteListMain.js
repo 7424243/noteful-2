@@ -38,9 +38,12 @@ class NoteListMain extends Component {
                 <ul className='notes-list'>
                     {list}
                 </ul>
-                <NavLink 
-                    to='/addnote' 
-                    className='add-note-link'>Add Note</NavLink>
+                <button className='add-button'>
+                    <NavLink 
+                        to='/addnote' 
+                        className='add-note-link'>Add Note</NavLink>
+                </button>
+
             </div>
         )
     }

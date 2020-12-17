@@ -40,7 +40,7 @@ class Note extends Component {
     render() {
         const {name, id, modified} = this.props
         return (
-            <>
+            <div className='note'>
                 <NavLink 
                     to={`../notepage/${id}`} 
                     className='note-name-link'><h2>{name}</h2></NavLink>
@@ -48,7 +48,7 @@ class Note extends Component {
                 <button 
                     className='delete-note'
                     onClick={this.handleClickDelete}>delete</button>
-            </>        
+            </div>        
         )
     }
 }
