@@ -61,6 +61,10 @@ class AddNote extends Component {
 
 
     render() {
+        const options = this.context.folders.map((folder) =>
+            <option key={folder.id} value={folder.name}>{folder.name}</option>
+        )
+
         return (
             <form className='note-form' onSubmit={e => this.handleSubmit(e)}>
                 <h2>Create New Note</h2>
@@ -79,10 +83,12 @@ class AddNote extends Component {
                     <textarea 
                         onChange={e => this.updateContent(e.target.value)}/>
                     <label htmlFor='folder'>Folder</label>
-                    <input type='text'
+                    <select 
                         className='note-folder'
                         name='folder'
-                        onChange={e => this.updateFolder(e.target.value)}/>
+                        onChange={e => this.updateFolder(e.target.value)}>
+                        {options}
+                    </select>
                 </div>
                 <div className='form-button-group'>
                     <button type='reset' className='form-button'>Cancel</button>
