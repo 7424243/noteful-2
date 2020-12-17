@@ -6,7 +6,8 @@ class AddFolder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: {value: '', touched: false}
+            name: '', 
+            touched: false
         }
     }
 
@@ -14,11 +15,11 @@ class AddFolder extends Component {
 
 
     updateFolder(folder) {
-        this.setState({name: {value: folder, touched: true}})
+        this.setState({name: folder, touched: true})
     }
     
     validateFolder() {
-        const folder = this.state.name.value.trim();
+        const folder = this.state.name.trim();
         if (folder.length === 0) {
             return 'Folder is required'
         } 
@@ -26,11 +27,10 @@ class AddFolder extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('Folder:', this.state.name.value)
-        const {folderName} = this.state.name.value
+        console.log('Folder:', this.state.name)
         fetch(`http://localhost:9090/folders`, {
             method: 'POST',
-            body: JSON.stringify(folderName),
+            body: JSON.stringify(this.state),
             headers: {
                 'content-type': 'application/json'
             },
