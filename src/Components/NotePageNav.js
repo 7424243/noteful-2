@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
 import NotefulContext from "../NotefulContext";
 import '../Styling/NotePageNav.css';
+import ErrorBoundary from "./ErrorBoundary";
 
 class NotePageNav extends Component {
     static defaultProps = {
@@ -23,16 +24,22 @@ class NotePageNav extends Component {
              folder.id === noteForPage.folderId);
         return (
             <nav className='note-nav'>
+                <ErrorBoundary>
                 <button 
                     onClick={() => this.props.history.goBack()}
                     className='note-page-back-link'>
                         back
                 </button>
                 <h2 className='note-folder-name'>{currentFolder.name}</h2>
+                </ErrorBoundary>
             </nav>
         )
     }
 }
 
 export default withRouter(NotePageNav);
+
+NotePageNav.defaultProps = {
+    name: null,
+}
 
