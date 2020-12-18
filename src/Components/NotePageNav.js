@@ -39,5 +39,3 @@ class NotePageNav extends Component {
 
 export default withRouter(NotePageNav);
 
-
-

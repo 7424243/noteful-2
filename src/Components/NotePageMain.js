@@ -48,9 +48,9 @@ class NotePageMain extends Component {
           <ErrorBoundary>
             <div className='note-page-container'>
                 <main className='note-spec-container'>
-                    <h3>{noteForPage.name}</h3>
-                    <p>{format(new Date(noteForPage.modified), 'MM/d/yyyy')}</p>
-                    <p>{noteForPage.content}</p>
+                    <h3>{noteForPage ? noteForPage.name : null}</h3>
+                    <p>{noteForPage ? format(new Date(noteForPage.modified), 'MM/d/yyyy') : null}</p>
+                    <p>{noteForPage ? noteForPage.content : null}</p>
                     <button className='note-page-delete-link' 
                     onClick={this.handleClickDelete}>delete</button>
                 </main>
@@ -62,7 +62,3 @@ class NotePageMain extends Component {
 
 export default NotePageMain;
 
-NotePageMain.defaultProps = {
-  name: null,
-  params: ' ',
-}
