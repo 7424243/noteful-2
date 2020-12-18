@@ -8,16 +8,20 @@ class ErrorBoundary extends Component {
         };
     }
     static getDerivedStateFromError(error) {
-        return {hasError: true};
+        return {hasError: true, error};
     }
 
+
     render() {
+
+        // return this.state.hasError ? <h2>Something went wrong, unable to display at this time.</h2> : this.props.children
+
         if (this.state.hasError) {
             return <h2>Something went wrong, unable to display at this time.</h2>
         
+        } else {
+            return this.props.children
         }
-        return this.props.children
-        
 
     }
 }
