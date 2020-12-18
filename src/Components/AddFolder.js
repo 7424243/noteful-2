@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from './ValidationError';
 import '../Styling/Forms.css';
+import ErrorBoundary from './ErrorBoundary';
 
 class AddFolder extends Component {
     constructor(props) {
@@ -57,28 +58,30 @@ class AddFolder extends Component {
 
     render() {
         return (
-            <form className='folder-form' onSubmit={event => this.handleSubmit(event)}>
-                <h2>Create New Folder</h2>
-                <div className='folder-form_required'>* required field</div>
-                <div className='form-group'>
-                    <label htmlFor='folder'>Folder *</label>
-                    <input 
-                        type='text' 
-                        className='new-folder-name' 
-                        name='folder' 
-                        id='folder'
-                        onChange={e => this.updateFolder(e.target.value)} />
-                        {this.state.name.touched && 
-                        <ValidationError message={this.validateFolder()}/>}
-                </div>
-                <div className='form-button-group'>
-                    <button 
-                        type='reset' 
-                        className='form-button'
-                        onClick={this.handleClickCancel}>Cancel</button>
-                    <button type='submit' className='form-button' disabled={this.validateFolder()}>Add Folder</button>
-                </div>
-            </form>
+            <ErrorBoundary>
+                <form className='folder-form' onSubmit={event => this.handleSubmit(event)}>
+                    <h2>Create New Folder</h2>
+                    <div className='folder-form_required'>* required field</div>
+                    <div className='form-group'>
+                        <label htmlFor='folder'>Folder *</label>
+                        <input 
+                            type='text' 
+                            className='new-folder-name' 
+                            name='folder' 
+                            id='folder'
+                            onChange={e => this.updateFolder(e.target.value)} />
+                            {this.state.name.touched && 
+                            <ValidationError message={this.validateFolder()}/>}
+                    </div>
+                    <div className='form-button-group'>
+                        <button 
+                            type='reset' 
+                            className='form-button'
+                            onClick={this.handleClickCancel}>Cancel</button>
+                        <button type='submit' className='form-button' disabled={this.validateFolder()}>Add Folder</button>
+                    </div>
+                </form>
+            </ErrorBoundary>
         )
     }
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from './ValidationError';
 import '../Styling/Forms.css';
+import ErrorBoundary from './ErrorBoundary';
 
 class AddNote extends Component {
     constructor(props) {
@@ -87,46 +88,48 @@ class AddNote extends Component {
         );
 
         return (
-            <form className='note-form' onSubmit={e => this.handleSubmit(e)}>
-                <h2>Create New Note</h2>
-                <div className='note-form_required'>* required field</div>
-                <div className='form-group'>
-                    <label htmlFor='name'>Name *</label>
-                    <input 
-                        type='text'
-                        className='note-name'
-                        name='name'
-                        id='name'
-                        onChange={e => this.updateName(e.target.value)}/>
-                        {this.state.name &&
-                        <ValidationError message={this.validateName()}/>}
-                    <label htmlFor='content'>Content *</label>
-                    <textarea 
-                        className='content'
-                        onChange={e => this.updateContent(e.target.value)}/>
-                        {this.state.content &&
-                        <ValidationError message={this.validateContent()}/>}
-                    <label htmlFor='folder'>Folder *</label>
-                    <select 
-                        className='note-folder'
-                        name='folder'
-                        onChange={e => this.updateFolder(e.target.value, e.target.folderid)}>
-                        <option></option>
-                        {options}
-                    </select>
-                    {this.state.folder &&
-                        <ValidationError message={this.validateFolder()}/>}
-                </div>
-                <div className='form-button-group'>
-                    <button type='reset' className='form-button'
-                        onClick={this.handleClickCancel}>Cancel</button>
-                    <button 
-                        type='submit' 
-                        className='form-button'
-                        onClick={this.handleClickSubmit}
-                        disabled={this.validateName() || this.validateContent() || this.validateFolder()}>Submit</button>
-                </div>
-            </form>
+            <ErrorBoundary>
+                <form className='note-form' onSubmit={e => this.handleSubmit(e)}>
+                    <h2>Create New Note</h2>
+                    <div className='note-form_required'>* required field</div>
+                    <div className='form-group'>
+                        <label htmlFor='name'>Name *</label>
+                        <input 
+                            type='text'
+                            className='note-name'
+                            name='name'
+                            id='name'
+                            onChange={e => this.updateName(e.target.value)}/>
+                            {this.state.name &&
+                            <ValidationError message={this.validateName()}/>}
+                        <label htmlFor='content'>Content *</label>
+                        <textarea 
+                            className='content'
+                            onChange={e => this.updateContent(e.target.value)}/>
+                            {this.state.content &&
+                            <ValidationError message={this.validateContent()}/>}
+                        <label htmlFor='folder'>Folder *</label>
+                        <select 
+                            className='note-folder'
+                            name='folder'
+                            onChange={e => this.updateFolder(e.target.value, e.target.folderid)}>
+                            <option></option>
+                            {options}
+                        </select>
+                        {this.state.folder &&
+                            <ValidationError message={this.validateFolder()}/>}
+                    </div>
+                    <div className='form-button-group'>
+                        <button type='reset' className='form-button'
+                            onClick={this.handleClickCancel}>Cancel</button>
+                        <button 
+                            type='submit' 
+                            className='form-button'
+                            onClick={this.handleClickSubmit}
+                            disabled={this.validateName() || this.validateContent() || this.validateFolder()}>Submit</button>
+                    </div>
+                </form>
+            </ErrorBoundary>
         )
     }
 }

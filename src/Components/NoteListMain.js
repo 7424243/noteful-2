@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import Note from './Note';
 import '../Styling/NoteListMain.css';
-import ErrorBoundary from './ErrorBoundary';
 
 class NoteListMain extends Component {
     static contextType = NotefulContext;
@@ -33,18 +32,16 @@ class NoteListMain extends Component {
             </li>
             )
         return (
-            <ErrorBoundary>
-                <div className='notes-list-container'>
-                    <ul className='notes-list'>
-                        {list}
-                    </ul>
-                    <button className='add-button'>
-                        <Link 
-                            to='/addnote' 
-                            className='add-note-link'>Add Note</Link>
-                    </button>
-                </div>
-            </ErrorBoundary>
+            <div className='notes-list-container'>
+                <ul className='notes-list'>
+                    {list}
+                </ul>
+                <button className='add-button'>
+                    <Link 
+                        to='/addnote' 
+                        className='add-note-link'>Add Note</Link>
+                </button>
+            </div>
         )
     }
 }
