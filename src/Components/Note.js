@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {format} from 'date-fns';
 import NotefulContext from '../NotefulContext';
 import PropTypes from 'prop-types';
@@ -39,9 +39,9 @@ class Note extends Component {
         const {name, id, modified} = this.props
         return (
             <div className='note'>
-                <NavLink 
+                <Link 
                     to={`../notepage/${id}`} 
-                    className='note-name-link'><h2>{name}</h2></NavLink>
+                    className='note-name-link'><h2>{name}</h2></Link>
                 <p>{format(new Date(modified), 'MM/d/yyyy')}</p>
                 <button 
                     className='delete-note'
@@ -54,7 +54,13 @@ class Note extends Component {
 export default Note;
 
 Note.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  modified: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  modified: PropTypes.string,
+}
+
+Note.defaultProps ={
+  id: null,
+  name: null,
+  modified: null
 }

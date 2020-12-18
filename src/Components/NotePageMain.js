@@ -58,3 +58,4 @@ class NotePageMain extends Component {
 }
 
 export default NotePageMain;
+
