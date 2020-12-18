@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import Note from './Note';
 import '../Styling/NoteListMain.css';
@@ -37,9 +37,9 @@ class NoteListMain extends Component {
                     {list}
                 </ul>
                 <button className='add-button'>
-                    <NavLink 
+                    <Link 
                         to='/addnote' 
-                        className='add-note-link'>Add Note</NavLink>
+                        className='add-note-link'>Add Note</Link>
                 </button>
 
             </div>
