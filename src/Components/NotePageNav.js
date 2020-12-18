@@ -30,7 +30,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>{currentFolder.name}</h2>
+                <h2 className='note-folder-name'>{currentFolder ? currentFolder.name : null}</h2>
                 </ErrorBoundary>
             </nav>
         )
@@ -39,7 +39,5 @@ class NotePageNav extends Component {
 
 export default withRouter(NotePageNav);
 
-NotePageNav.defaultProps = {
-    name: null,
-}
+
 
