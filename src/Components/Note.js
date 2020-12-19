@@ -57,6 +57,7 @@ Note.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   modified: PropTypes.string,
+  onDeleteNote: PropTypes.func,
 }
 
 Note.defaultProps ={
