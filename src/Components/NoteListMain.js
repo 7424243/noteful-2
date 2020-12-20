@@ -8,7 +8,6 @@ import '../Styling/NoteListMain.css';
 class NoteListMain extends Component {
     static contextType = NotefulContext;
 
-
     render() {
         const {folderId} = this.props.match.params;
         const {notes=[]} = this.context;
