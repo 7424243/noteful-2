@@ -5,6 +5,6 @@ import Note from '../Components/Note';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><Note /></BrowserRouter>, div);
+    ReactDOM.render(<BrowserRouter><Note id={'1234'} name={'Test'} modified={'2019-01-03T00:00:00.000Z'}/></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
