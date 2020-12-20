@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
 import { format } from 'date-fns';
 import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 import '../Styling/NotePageMain.css';
 
 
 class NotePageMain extends Component {
     static contextType = NotefulContext;
-
-    static defaultProps = {
-        match: {
-          params: {}
-        }
-    }
 
     handleClickDelete = e => {
         e.preventDefault()
@@ -59,3 +54,13 @@ class NotePageMain extends Component {
 
 export default NotePageMain;
 
+NotePageMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      noteId: PropTypes.string
+    })
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
+}
