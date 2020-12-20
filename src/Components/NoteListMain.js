@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 import Note from './Note';
 import '../Styling/NoteListMain.css';
 
 class NoteListMain extends Component {
     static contextType = NotefulContext;
 
-    static defaultProps = {
-        match: {
-            params: {}
-        }
-    }
 
     render() {
         const {folderId} = this.props.match.params;
@@ -48,4 +44,10 @@ class NoteListMain extends Component {
 
 export default NoteListMain;
 
-
+NoteListMain.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            folderId: PropTypes.string
+        })
+    }).isRequired
+}
