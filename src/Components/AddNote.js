@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from './ValidationError';
+import PropTypes from 'prop-types';
 import '../Styling/Forms.css';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -135,3 +136,7 @@ class AddNote extends Component {
 }
 
 export default AddNote;
+
+AddNote.propTypes = {
+    history: PropTypes.object.isRequired,
+}
