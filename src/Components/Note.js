@@ -7,9 +7,6 @@ import '../Styling/Note.css';
 
 
 class Note extends Component {
-    static defaultProps = {
-        onDeleteNote: () => {}
-    }
 
     static contextType = NotefulContext;
 
@@ -29,7 +26,7 @@ class Note extends Component {
           })
           .then(() => {
             this.context.deleteNote(noteId);
-            this.props.onDeleteNote(noteId);
+            
           })
           .catch(error => {
             console.error({ error });
@@ -57,7 +54,6 @@ Note.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   modified: PropTypes.string,
-  onDeleteNote: PropTypes.func,
 }
 
 Note.defaultProps ={
