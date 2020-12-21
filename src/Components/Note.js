@@ -7,12 +7,12 @@ import '../Styling/Note.css';
 
 
 class Note extends Component {
-
+    //allow access to context
     static contextType = NotefulContext;
-
+    //DELETE api request
     handleClickDelete = (e) => {
         e.preventDefault()
-        const noteId = this.props.id;
+        const noteId = this.props.id; //use the noteId passed from props
         fetch(`http://localhost:9090/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
@@ -25,7 +25,7 @@ class Note extends Component {
             return res.json();
           })
           .then(() => {
-            this.context.deleteNote(noteId);
+            this.context.deleteNote(noteId); //update context using the deleteNote function
             
           })
           .catch(error => {
@@ -38,8 +38,8 @@ class Note extends Component {
             <div className='note'>
                 <Link 
                     to={`../notepage/${id}`} 
-                    className='note-name-link'><h2>{name}</h2></Link>
-                <p>{format(new Date(modified), 'MM/d/yyyy')}</p>
+                    className='note-name-link'><h2>{name}</h2></Link>{/*the name links to the /notepage/id dynamic route*/}
+                <p>{format(new Date(modified), 'MM/d/yyyy')}</p> {/*converts the date*/}
                 <button 
                     className='delete-note'
                     onClick={this.handleClickDelete}>delete</button>
@@ -50,6 +50,7 @@ class Note extends Component {
 
 export default Note;
 
+//set PropTypes for validation
 Note.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
