@@ -5,6 +5,13 @@ import NoteListMain from '../Components/NoteListMain';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><NoteListMain /></BrowserRouter>, div);
+    const props = {
+        match: {
+            params: {
+                folderId: 'Test_Folder_Id'
+            }
+        }
+    }
+    ReactDOM.render(<BrowserRouter><NoteListMain {...props}/></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
 });

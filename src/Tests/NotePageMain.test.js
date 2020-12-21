@@ -4,6 +4,13 @@ import NotePageMain from '../Components/NotePageMain';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><NotePageMain /></BrowserRouter>, div);
+    const props = {
+        match: {
+            params: {
+                noteId: 'Test_Note_Id'
+            }
+        }
+    }
+    ReactDOM.render(<BrowserRouter><NotePageMain {...props}/></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
 });
