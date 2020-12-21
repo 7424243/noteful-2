@@ -4,6 +4,11 @@ import AddFolder from '../Components/AddFolder';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<AddFolder />, div);
+    const props = {
+      history: {
+        push: jest.fn()
+      }
+    }
+    ReactDOM.render(<AddFolder {...props}/>, div);
     ReactDOM.unmountComponentAtNode(div);
   });

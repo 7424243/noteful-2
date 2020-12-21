@@ -9,6 +9,9 @@ it('renders without crashing', () => {
             params: {
                 noteId: 'Test_Note_Id'
             }
+        },
+        history: {
+            push: jest.fn()
         }
     }
     ReactDOM.render(<BrowserRouter><NotePageMain {...props}/></BrowserRouter>, div);
