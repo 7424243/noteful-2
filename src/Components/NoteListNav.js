@@ -4,9 +4,11 @@ import NotefulContext from '../NotefulContext';
 import '../Styling/NoteListNav.css';
 
 class NoteListNav extends Component {
+    //allow access to context
     static contextType = NotefulContext;
     
     render() {
+        //map over the folders in context and for each folder create a list item that has the folder name as a NaveLink to the noteslist/:folderId route
         const list = this.context.folders.map((folder) => 
             <li 
                 key={folder.id} 
@@ -29,7 +31,7 @@ class NoteListNav extends Component {
                     <NavLink 
                         to='/addfolder' 
                         className='add-folder-link'
-                        >Add Folder</NavLink>
+                        >Add Folder</NavLink> {/*NavLink to the /addfolder route. NavLink provides an activeClassName attribute that helps with styling*/}
                 </button>
 
             </div>
