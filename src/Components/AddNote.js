@@ -111,6 +111,7 @@ class AddNote extends Component {
                         <label htmlFor='content'>Content *</label>
                         <textarea 
                             className='content'
+                            name='content'
                             onChange={e => this.updateContent(e.target.value)}/> {/*When this is changed, call updateContent using the inserted value*/}
                             {this.state.content &&
                             <ValidationError message={this.validateContent()}/>} {/*when there is a content, use the ValidationError component to display an error, if there is one*/}
