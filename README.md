@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 This is a Thinkful assignment.
-This app is to be used with [noteful-json-server] (https://github.com/7424243/noteful-json-server)
+This app is to be used with [noteful-json-server] (https://github.com/7424243/noteful-json-server).
 
 ## Available Scripts
 
@@ -14,19 +14,19 @@ In the project directory, you can run:
 ## Screenshots
 
 ### Home
-![home page image](homePath.png)
+![home page image](screenshots/homePath.png)
 
 ### Folder View
-![folder view page image](folderViewPath.png)
+![folder view page image](screenshots/folderViewPath.png)
 
 ### Note View
-![note view page image](notePath.png)
+![note view page image](screenshots/notePath.png)
 
 ### Add Note View
-![add note view page image](addNotePath.png)
+![add note view page image](screenshots/addNotePath.png)
 
 ### Add Folder View
-![add folder view page image](addFolderPath.png)
+![add folder view page image](screenshots/addFolderPath.png)
 
 ## Summary
 
