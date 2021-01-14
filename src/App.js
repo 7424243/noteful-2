@@ -19,8 +19,8 @@ class App extends Component {
   componentDidMount() {
     //Promise.all() runs several asynchronous operations in parallel. Accepts an array of promises/fetches and ensures all are resolved before invoking the then() method.
     Promise.all([
-      fetch(`http://localhost:8000/api/notes`),
-      fetch(`http://localhost:8000/api/folders`)
+      fetch(`https://peaceful-spire-25787.herokuapp.com/api/notes`),
+      fetch(`https://peaceful-spire-25787.herokuapp.com/api/folders`)
     ])
         //the parameter of then() is an array of results of the Promises.
         .then(([notesResponse, foldersResponse]) => {

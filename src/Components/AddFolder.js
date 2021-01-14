@@ -35,7 +35,7 @@ class AddFolder extends Component {
     handleSubmit(event) {
         event.preventDefault(); 
         console.log('Folder:', this.state.folder_name);
-        fetch(`http://localhost:8000/api/folders`, {
+        fetch(`https://peaceful-spire-25787.herokuapp.com/api/folders`, {
             method: 'POST',
             body: JSON.stringify(this.state),//makes sure that the JSON object is in JSON string format
             headers: {

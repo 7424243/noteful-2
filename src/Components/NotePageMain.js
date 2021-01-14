@@ -14,7 +14,7 @@ class NotePageMain extends Component {
         e.preventDefault()
         //this.props.history.push('/') //access Route's props to push home
         const noteId = this.props.match.params.note_id
-        fetch(`http://localhost:8000/api/notes/${noteId}`, {
+        fetch(`https://peaceful-spire-25787.herokuapp.com/api/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json'

@@ -64,7 +64,7 @@ class AddNote extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state)
-        fetch(`http://localhost:8000/api/notes`, {
+        fetch(`https://peaceful-spire-25787.herokuapp.com/api/notes`, {
             method: 'POST',
             body: JSON.stringify(this.state), //make sure the body is in JSON string format using state's data
             headers: {
