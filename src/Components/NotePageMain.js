@@ -35,7 +35,7 @@ class NotePageMain extends Component {
       }
 
     render() {
-        const noteId = this.props.match.params.noteId; //get noteId from Route's match props
+        const noteId = parseInt(this.props.match.params.note_id); //get noteId from Route's match props
         const notes = this.context.notes; //get notes from context
         const getNote = (notes, noteId) =>
             notes.find(note => note.id === noteId); //get the specific note that matches the noteId
@@ -45,7 +45,7 @@ class NotePageMain extends Component {
           <div className='note-page-container'>
               <main className='note-spec-container'>
                   <h3>{noteForPage ? noteForPage.note_name : null}</h3>
-                  <p>{noteForPage ? noteForPage.date_modified : null}</p>
+                  <p>{noteForPage ? format(new Date(noteForPage.date_modified), 'MM/d/yyyy') : null}</p>
                   <p>{noteForPage ? noteForPage.content : null}</p>
                   <button className='note-page-delete-link' 
                   onClick={this.handleClickDelete}>delete</button> {/*call handleClickDelete*/}
@@ -68,4 +68,4 @@ NotePageMain.propTypes = {
   }).isRequired
 }
 
-//format(new Date(noteForPage.modified), 'MM/d/yyyy')
+//format(new Date(noteForPage.date_modified), 'MM/d/yyyy')
