@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This is a Thinkful assignment.
 This app is to be used with [noteful-api](https://github.com/7424243/noteful-api).
 
+## Live Demo
+
+Click [HERE](https://noteful-2-sigma.vercel.app) to see a live demo when deployed with noteful-api server.
+
 ## Available Scripts
 
 In the project directory, you can run:
