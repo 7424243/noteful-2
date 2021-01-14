@@ -17,8 +17,8 @@ class NoteListNav extends Component {
                 <NavLink 
                     to={`../noteslist/${folder.id}`}
                     className='folder-name'
-                    foldername={folder.name}
-                    notes={this.context.notes}>{folder.name}</NavLink>
+                    foldername={folder.folder_name}
+                    notes={this.context.notes}>{folder.folder_name}</NavLink>
             </li>
         )
 

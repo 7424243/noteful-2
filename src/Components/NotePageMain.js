@@ -14,7 +14,7 @@ class NotePageMain extends Component {
         e.preventDefault()
         this.props.history.push('/') //access Route's props to push home
         const {noteId} = this.props.match.params
-        fetch(`http://localhost:9090/notes/${noteId}`, {
+        fetch(`http://localhost:8000/api/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json'
@@ -44,8 +44,8 @@ class NotePageMain extends Component {
           //conditionally render the name, date, and content if getNote found a note
           <div className='note-page-container'>
               <main className='note-spec-container'>
-                  <h3>{noteForPage ? noteForPage.name : null}</h3>
-                  <p>{noteForPage ? format(new Date(noteForPage.modified), 'MM/d/yyyy') : null}</p>
+                  <h3>{noteForPage ? noteForPage.note_name : null}</h3>
+                  <p>{noteForPage ? noteForPage.date_modified : null}</p>
                   <p>{noteForPage ? noteForPage.content : null}</p>
                   <button className='note-page-delete-link' 
                   onClick={this.handleClickDelete}>delete</button> {/*call handleClickDelete*/}
@@ -67,3 +67,5 @@ NotePageMain.propTypes = {
     push: PropTypes.func
   }).isRequired
 }
+
+//format(new Date(noteForPage.modified), 'MM/d/yyyy')

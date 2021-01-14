@@ -19,8 +19,8 @@ class App extends Component {
   componentDidMount() {
     //Promise.all() runs several asynchronous operations in parallel. Accepts an array of promises/fetches and ensures all are resolved before invoking the then() method.
     Promise.all([
-      fetch(`http://localhost:9090/notes`),
-      fetch(`http://localhost:9090/folders`)
+      fetch(`http://localhost:8000/api/notes`),
+      fetch(`http://localhost:8000/api/folders`)
     ])
         //the parameter of then() is an array of results of the Promises.
         .then(([notesResponse, foldersResponse]) => {
@@ -84,11 +84,11 @@ class App extends Component {
                   component={NoteListNav} //this is the component that should render in the home path
                 />
                 <Route
-                  path='/noteslist/:folderId' //this is a dynamic route path
+                  path='/noteslist/:folder_id' //this is a dynamic route path
                   component={NoteListNav} 
                 />  
                 <Route 
-                  path='/notepage/:noteId'
+                  path='/notepage/:note_id'
                   component={NotePageNav}
                 />
                 <Route 
@@ -104,11 +104,11 @@ class App extends Component {
                   component={NoteListMain}
                 />
                 <Route
-                  path='/noteslist/:folderId'
+                  path='/noteslist/:folder_id'
                   component={NoteListMain}
                 />  
                 <Route 
-                  path='/notepage/:noteId' 
+                  path='/notepage/:note_id' 
                   component={NotePageMain}
                 />
                 <Route 

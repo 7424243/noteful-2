@@ -10,10 +10,10 @@ class NoteListMain extends Component {
     static contextType = NotefulContext;
 
     render() {
-        const folderId = this.props.match.params.folderId; //get the folderId from the Route's props
+        const folderId = parseInt(this.props.match.params.folder_id); //get the folderId from the Route's props
         const notes = this.context.notes; //get the notes from context
         const getNotes = (notes, folderId) => (
-            (!folderId) ? notes : notes.filter(note => note.folderId === folderId)
+            (!folderId) ? notes : notes.filter(note => note.folder_id === folderId)
         )//if there is note a folderId, then get all notes, else, find the notes with the specific folderId
         const notesForFolder = getNotes(notes, folderId); //provide the parameters
         const list = notesForFolder.map((note) =>
@@ -22,8 +22,8 @@ class NoteListMain extends Component {
                 className='note-item'>
                 <Note 
                   id={note.id}
-                  name={note.name}
-                  modified={note.modified}/>
+                  name={note.note_name}
+                  modified={note.date_modified}/>
 
             </li>
             )//map over the notes and create a List Item for each using the Note Component

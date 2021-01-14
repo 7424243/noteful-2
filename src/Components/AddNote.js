@@ -10,17 +10,17 @@ class AddNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                name:'',
+                note_name:'',
                 content: '',
-                folderId: '',
-                modified: '',
+                folder_id: '',
+                date_modified: '',
         }
     }
     //allow access to content
     static contextType = NotefulContext;
     //update state with name's new value
     updateName(name) {
-        this.setState({name: name})
+        this.setState({note_name: name})
     };
     //update state with content's new value
     updateContent(content) {
@@ -28,7 +28,7 @@ class AddNote extends Component {
     };
     //update state with folderId's new value
     updateFolder(folderId) {
-        this.setState({folderId: folderId})
+        this.setState({folder_id: folderId})
     };
     //use Route's props history to push home
     handleClickCancel = () => {
@@ -37,11 +37,11 @@ class AddNote extends Component {
     //update state with new modifiedDate when form is submitted
     handleClickSubmit = () => {
         const modifiedDate = new Date().toISOString();
-        this.setState({modified: modifiedDate});
+        this.setState({date_modified: modifiedDate});
     };
     //make sure the name is longer than 0 characters
     validateName() {
-        const name = this.state.name.trim();
+        const name = this.state.note_name.trim();
         if(name.length === 0) {
             return 'Name is required'
         }
@@ -55,7 +55,7 @@ class AddNote extends Component {
     };
     //make sure the folder is longer than 0 characters
     validateFolder() {
-        const folder = this.state.folderId;
+        const folder = this.state.folder_id;
         if(folder.length === 0) {
             return 'Must select a folder'
         }
@@ -64,7 +64,7 @@ class AddNote extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state)
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`http://localhost:8000/api/notes`, {
             method: 'POST',
             body: JSON.stringify(this.state), //make sure the body is in JSON string format using state's data
             headers: {
@@ -90,7 +90,7 @@ class AddNote extends Component {
     render() {
         //for multiple options to select a folder from, map over the existing folders in context and create an option for each folder name but set the value to the folder's id
         const options = this.context.folders.map((folder) =>
-            <option key={folder.id} value={folder.id}>{folder.name}</option>
+            <option key={folder.id} value={folder.id}>{folder.folder_name}</option>
         );
 
         return (
@@ -106,7 +106,7 @@ class AddNote extends Component {
                             name='name'
                             id='name'
                             onChange={e => this.updateName(e.target.value)}/> {/*when this is changed, call updateName using the inserted value*/}
-                            {this.state.name &&
+                            {this.state.note_name &&
                             <ValidationError message={this.validateName()}/>}{/*when there is a name, use the ValidationError component to display an error, if there is one*/}
                         <label htmlFor='content'>Content *</label>
                         <textarea 
@@ -123,7 +123,7 @@ class AddNote extends Component {
                             <option></option>
                             {options}
                         </select>
-                        {this.state.folder && 
+                        {this.state.folder_id && 
                             <ValidationError message={this.validateFolder()}/>} {/*when there is a folder, call use the ValidationError component to display an error message, if there is one*/}
                     </div>
                     <div className='form-button-group'>

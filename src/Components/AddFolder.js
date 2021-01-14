@@ -9,7 +9,7 @@ class AddFolder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '', //set initial state to have an empty string for name
+            folder_name: '', //set initial state to have an empty string for name
             touched: false
         }
     };
@@ -18,7 +18,7 @@ class AddFolder extends Component {
 
     //use the folder name input to update state
     updateFolder(folder) {
-        this.setState({name: folder, touched:true})
+        this.setState({folder_name: folder, touched:true})
     };
 
     handleClickCancel = () => {
@@ -26,7 +26,7 @@ class AddFolder extends Component {
     };
     //validate folder name in that it is longer than 0 characters (required)
     validateFolder() {
-        const folder = this.state.name.trim();
+        const folder = this.state.folder_name.trim();
         if (folder.length === 0) {
             return 'Folder is required'
         } 
@@ -34,8 +34,8 @@ class AddFolder extends Component {
     //do something when the form is submitted...
     handleSubmit(event) {
         event.preventDefault(); 
-        console.log('Folder:', this.state.name);
-        fetch(`http://localhost:9090/folders`, {
+        console.log('Folder:', this.state.folder_name);
+        fetch(`http://localhost:8000/api/folders`, {
             method: 'POST',
             body: JSON.stringify(this.state),//makes sure that the JSON object is in JSON string format
             headers: {
@@ -71,7 +71,7 @@ class AddFolder extends Component {
                             name='folder' 
                             id='folder'
                             onChange={e => this.updateFolder(e.target.value)} /> {/*call updateFolder with the value that was entered*/}
-                            {this.state.name.touched && 
+                            {this.state.folder_name.touched && 
                             <ValidationError message={this.validateFolder()}/>} {/*if touched is true, render ValidationError with message from validateFolder*/}
                     </div>
                     <div className='form-button-group'>

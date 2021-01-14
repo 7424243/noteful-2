@@ -16,7 +16,7 @@ class NotePageNav extends Component {
             notes.find(note => note.id === noteId); //get a specific note by passing in all of the notes and the noteId and finding the note that has the noteId
         const noteForPage = getNote(notes, noteId); //pass in notes and noteId
          const currentFolder = folders.find(folder => 
-             folder.id === noteForPage.folderId); //get the current folder by finding the folder that has the note's folderId
+             folder.id === noteForPage.folder_id); //get the current folder by finding the folder that has the note's folderId
         return (
             <nav className='note-nav'>
                 <button 
@@ -24,7 +24,7 @@ class NotePageNav extends Component {
                     className='note-page-back-link'>
                         back
                 </button>
-                <h2 className='note-folder-name'>{currentFolder ? currentFolder.name : null}</h2>
+                <h2 className='note-folder-name'>{currentFolder ? currentFolder.folder_name : null}</h2>
             </nav>
         )
     }
