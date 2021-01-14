@@ -25,7 +25,7 @@ class Note extends Component {
             if (!res.ok) {
               return res.json().then(e => Promise.reject(e));
             }
-            return res.json();
+            return res;
           })
           .then(() => {
             this.context.deleteNote(noteId); //update context using the deleteNote function

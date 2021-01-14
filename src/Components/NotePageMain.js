@@ -12,7 +12,7 @@ class NotePageMain extends Component {
   //DELETE api request
     handleClickDelete = e => {
         e.preventDefault()
-        this.props.history.push('/') //access Route's props to push home
+        //this.props.history.push('/') //access Route's props to push home
         const noteId = this.props.match.params.note_id
         fetch(`http://localhost:8000/api/notes/${noteId}`, {
           method: 'DELETE',
@@ -21,13 +21,15 @@ class NotePageMain extends Component {
           },
         })
           .then(res => {
+            console.log(res)
             if (!res.ok) {
               return res.json().then(e => Promise.reject(e));
             }
-            return res.json();
+            return res;
           })
           .then(() => {
             this.context.deleteNote(noteId); //update context using deleteNote
+            this.props.history.push('/') //access Route's props to push home
             
           })
           .catch(error => {
