@@ -13,7 +13,7 @@ class NotePageMain extends Component {
     handleClickDelete = e => {
         e.preventDefault()
         this.props.history.push('/') //access Route's props to push home
-        const {noteId} = this.props.match.params
+        const noteId = this.props.match.params.note_id
         fetch(`http://localhost:8000/api/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
@@ -21,8 +21,9 @@ class NotePageMain extends Component {
           },
         })
           .then(res => {
-            if (!res.ok)
+            if (!res.ok) {
               return res.json().then(e => Promise.reject(e));
+            }
             return res.json();
           })
           .then(() => {
@@ -68,4 +69,3 @@ NotePageMain.propTypes = {
   }).isRequired
 }
 
-//format(new Date(noteForPage.date_modified), 'MM/d/yyyy')

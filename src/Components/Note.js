@@ -14,7 +14,7 @@ class Note extends Component {
     handleClickDelete = (e) => {
         e.preventDefault()
         const noteId = this.props.id; //use the noteId passed from props
-        fetch(`http://localhost:8000/notes/${noteId}`, {
+        fetch(`http://localhost:8000/api/notes/${noteId}`, {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json'
