@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 This is a Thinkful assignment.
-This app is to be used with [noteful-json-server] (https://github.com/7424243/noteful-json-server).
+This app is to be used with [noteful-api](https://github.com/7424243/noteful-api).
 
 ## Available Scripts
 
